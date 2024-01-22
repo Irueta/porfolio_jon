@@ -4,11 +4,18 @@ import React, { useState, useEffect } from 'react';
 import Spaceship from './components/Spaceship';
 import Invader from './components/Invader';
 import Shot from './components/Shot';
+import './App.css';
 
 function App() {
   const [spaceshipPosition, setSpaceshipPosition] = useState({ x: 50, y: 0 });
-  const [invaders, setInvaders] = useState([{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 }]);
+  const [invaders, setInvaders] = useState([
+    { x: 0, y: 20, type: 'CV' },
+    { x: 30, y: 20, type: 'Contacto' },
+    { x: 60, y: 20, type: 'Proyectos' },
+  ]);
   const [shots, setShots] = useState([]);
+  const [collision, setCollision] = useState(null);
+  const [moveRight, setMoveRight] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -28,11 +35,42 @@ function App() {
     };
   }, [spaceshipPosition]);
 
+
+  useEffect(() => {
+    if (collision) {
+      switch (collision) {
+        case 'CV':
+          console.log('CV clicked');
+          break;
+        case 'Contacto':
+          console.log('Contacto clicked');
+          break;
+        case 'Proyectos':
+          console.log('Proyectos clicked');
+          break;
+        default:
+          break;
+      }
+      setCollision(null); // Reset collision state after handling it
+    }
+  }, [collision]); // Dependencia de collision para que el efecto se ejecute cuando se detecta una colisión
+
   useEffect(() => {
     // Esta función se encarga de mover los disparos hacia arriba en intervalos regulares
     const moveShots = () => {
       setShots((prevShots) =>
-        prevShots.map((shot) => ({ ...shot, y: shot.y + 5 }))
+        prevShots.map((shot) => {
+          // Comprobar si este disparo ha colisionado con un invasor
+          for (let invader of invaders) {
+            if (Math.abs(shot.x - invader.x) < 5 && Math.abs(shot.y - invader.y) < 5) {
+              // Si hay una colisión, establecer el estado de colisión y eliminar el disparo
+              setCollision(invader.type);
+              //return null;
+            }
+          }
+          // Si no hay colisión, mover el disparo hacia arriba
+          return { ...shot, y: shot.y + 5 };
+        }).filter(Boolean) // Eliminar los disparos que han colisionado
       );
     };
   
@@ -42,18 +80,63 @@ function App() {
     return () => {
       clearInterval(intervalId);
     };
-  }, [shots]); // Dependencia de shots para que el efecto se ejecute cuando se actualizan los disparos
+  }, [shots, invaders]);// Dependencia de shots para que el efecto se ejecute cuando se actualizan los disparos
+
+
+  useEffect(() => {
+    const moveInvaders = () => {
+      setInvaders((prevInvaders) =>
+        prevInvaders.map((invader) => ({ ...invader, y: invader.y + 1 }))
+      );
+    };
+  
+    const moveInvaders2 = () => {
+      setInvaders((prevInvaders) => {
+        const maxRight = Math.max(...prevInvaders.map((invader) => invader.x));
+        const maxLeft = Math.min(...prevInvaders.map((invader) => invader.x));
+  
+        if (!moveRight && maxRight >= 80) {
+          setMoveRight(true);
+          return prevInvaders.map((invader) => ({ ...invader, x: invader.x - 1 }));
+        }
+        if (moveRight && maxLeft <= 0) {
+          setMoveRight(false);
+          return prevInvaders.map((invader) => ({ ...invader, x: invader.x + 1 }));
+        }
+        return prevInvaders.map((invader) => ({ ...invader, x: invader.x + (moveRight ? -1 : 1) }));
+      });
+    };
+  
+    const intervalId = setInterval(moveInvaders, 3000);
+    const intervalId2 = setInterval(moveInvaders2, 1000);
+  
+    return () => {
+      clearInterval(intervalId);
+      clearInterval(intervalId2);
+    };
+  }, [moveRight]);
   
 
   return (
     <>
-      <Spaceship position={spaceshipPosition} />
-      {invaders.map((invader, index) => (
-        <Invader key={index} position={invader} />
-      ))}
-      {shots.map((shot, index) => (
-        <Shot key={index} position={shot} />
-      ))}
+    <div>
+      <div className='gameContainer'>
+        <div className='titleContainer'>
+          <img  className='titulo_invaders' src="/titulo_invaders.png" alt="" />
+        </div>
+        <div className='spaceShipContainer'>
+        <Spaceship position={spaceshipPosition} />
+        </div>
+        <div className='invadersContainer'>
+        {invaders.map((invader, index) => (
+          <Invader key={index} position={invader} type={invader.type}/>
+        ))}
+        </div>
+        {shots.map((shot, index) => (
+          <Shot key={index} position={shot} />
+        ))}
+        </div>
+      </div>
     </>
   );
 }

@@ -1,0 +1,16 @@
+
+body {
+    background-image: url('fondo.jpeg');
+    background-size: cover;
+  }
+
+  .gameContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+.titulo_invaders {
+    width: 100%;
+    margin-top: 5%;
+}
