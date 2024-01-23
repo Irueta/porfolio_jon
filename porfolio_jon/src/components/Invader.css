@@ -4,14 +4,16 @@
 }
 
 .naveExtraterrestre{
-    width: 70px;
-    height: 60px;
+    width: 100px;
+    height: 80px;
     margin-top: -25%;
 }
 
 .tipoInvader{
     text-align: center;
     color: white;
+    font-size: 30px;
+    margin-bottom: 8px;
 }
 
 .invaderImg{

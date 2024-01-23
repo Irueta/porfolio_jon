@@ -32,8 +32,7 @@ function Invader({ position, type }) {
     return (
         <>
         <div className='invaderImg' style={{ position: 'absolute', left: `${position.x}%`, top: `${position.y}%` }} onClick={handleClick}>
-            <p className='tipoInvader'>{type}</p>
-            <img className='naveExtraterrestre' src="/nave-espacial.png" alt="" typeof={type}/>
+            <img className='naveExtraterrestre' src={`/nave-espacial-${type}.png`} alt="" typeof={type}/>
         </div>
 
       </>

@@ -2,6 +2,8 @@
 body {
     background-image: url('fondo.jpeg');
     background-size: cover;
+    font-family: "Press start 2P";
+    font-size: 10px;
   }
 
   .gameContainer {
@@ -35,4 +37,54 @@ body {
 .startButton:hover {
   animation-play-state: paused;
   transform: scale(1.2);
+}
+
+.headerBar{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(48, 194, 194);
+  width: 100%;
+  justify-content: space-between;
+}
+
+.livesContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.leyenda {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Asegúrate de que el div tenga una altura. Si no, puedes usar un valor específico en lugar de 100% */
+}
+
+.leyenda img {
+  width: 50px;
+  height: 50px;
+
+}
+
+.leyendaImg{
+transform: scale(0.4);
+}
+
+.leyendaIconos{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 1fr;
+  width: 300px;
+  margin: 5px 0px 0px 0px;
+}
+
+.scoreContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.scoreContainer p {
+  font-size: 30px;
 }

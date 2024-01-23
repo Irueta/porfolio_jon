@@ -10,12 +10,9 @@ import Modal from './components/Modal';
 function App() {
   const [spaceshipPosition, setSpaceshipPosition] = useState({ x: 50, y: 0 });
   const [invaders, setInvaders] = useState([
-    { x: 0, y: 30, type: 'CV' },
-    { x: 30, y: 30, type: 'Contacto' },
-    { x: 60, y: 30, type: 'Proyectos' },
-    { x: 0, y: 40, type: 'CV' },
-    { x: 30, y: 40, type: 'Contacto' },
-    { x: 60, y: 40, type: 'Proyectos' },
+    { x: 0, y: 50, type: 'CV' },
+    { x: 30, y: 50, type: 'Contacto' },
+    { x: 60, y: 50, type: 'Proyectos' },
   ]);
   const [shots, setShots] = useState([]);
   const [collision, setCollision] = useState(null);
@@ -125,8 +122,8 @@ function App() {
       });
     };
   
-    const intervalId = setInterval(moveInvaders, 3000);
-    const intervalId2 = setInterval(moveInvaders2, 1000);
+    const intervalId = setInterval(moveInvaders, 2000);
+    const intervalId2 = setInterval(moveInvaders2, 500);
   
     return () => {
       clearInterval(intervalId);
@@ -138,16 +135,19 @@ function App() {
   useEffect(() => {
       if (invaders.some((invader) => invader.y >= 80) || gameOver === true) {
         setGameOver(true);
-        setInvaders([
-          { x: 0, y: 30, type: 'CV' },
-          { x: 30, y: 30, type: 'Contacto' },
-          { x: 60, y: 30, type: 'Proyectos' },
-          { x: 0, y: 40, type: 'CV' },
-          { x: 30, y: 40, type: 'Contacto' },
-          { x: 60, y: 40, type: 'Proyectos' },
-        ]);
       }
-  }, [invaders, gameOver]);
+  }, [invaders]);
+
+
+  useEffect(() => {
+    if (gameOver === true){
+      setInvaders([
+        { x: 0, y: 50, type: 'CV' },
+        { x: 30, y: 50, type: 'Contacto' },
+        { x: 60, y: 50, type: 'Proyectos' },
+      ]);
+    }
+  }, [gameOver]);
   
   if (!gameStarted && !gameOver) {
     return (
@@ -175,7 +175,30 @@ function App() {
     <>
     <div>
       <div className='gameContainer'>
-        <button onClick={() => {setGameStarted(false); setGameOver(false)}}></button>
+        <div className='headerBar'>
+          <div className='scoreContainer'>
+            <img className='leyendaImg' src="/score.png" alt="" />
+            <p>00000</p>
+          </div>
+          <div className='livesContainer'>
+            <img className='leyendaImg' src="/leyenda.png" alt="" />
+            <div className='leyendaIconos'>
+            <div className='leyenda'>
+              <img src="/nave-espacial-CV.png" alt="" />
+              <p>CV</p>
+            </div>
+            <div className='leyenda'>
+              <img src="/nave-espacial-Contacto.png" alt="" />
+              <p>Contacto</p>
+            </div>
+            <div className='leyenda'>
+              <img src="/nave-espacial-Proyectos.png" alt="" />
+              <p>Proyectos</p>
+              </div> 
+            </div>
+          </div>
+        </div>
+        {/* <button onClick={() => {setGameStarted(false); setGameOver(false)}}></button> */}
         <div className='titleContainer'>
           <img  className='titulo_invaders' src="/jon_invaders.png" alt="" />
         </div>
