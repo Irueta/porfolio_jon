@@ -136,7 +136,7 @@ function App() {
 
 
   useEffect(() => {
-      if (invaders.some((invader) => invader.y >= 80)) {
+      if (invaders.some((invader) => invader.y >= 80) || gameOver === true) {
         setGameOver(true);
         setInvaders([
           { x: 0, y: 30, type: 'CV' },
@@ -147,7 +147,7 @@ function App() {
           { x: 60, y: 40, type: 'Proyectos' },
         ]);
       }
-  }, [invaders]);
+  }, [invaders, gameOver]);
   
   if (!gameStarted && !gameOver) {
     return (
