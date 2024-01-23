@@ -175,6 +175,7 @@ function App() {
     <>
     <div>
       <div className='gameContainer'>
+        <button onClick={() => {setGameStarted(false); setGameOver(false)}}></button>
         <div className='titleContainer'>
           <img  className='titulo_invaders' src="/jon_invaders.png" alt="" />
         </div>

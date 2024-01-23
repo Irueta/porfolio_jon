@@ -9,6 +9,16 @@ function Modal({ type, setModal }) {
         setModal(false);
     };
 
+    function sendEmail(e) {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const message = e.target.message.value;
+      
+        window.location.href = `mailto:irueta@gmail.com?subject=Mensaje de ${name} (${email})&body=${message}`;
+      }
+
+
  //funcion para mostrar contenido diferente segun el type
     const renderContent = () => {
         switch (type) {
@@ -25,27 +35,27 @@ function Modal({ type, setModal }) {
                     </div>
                   );
                   case 'Contacto':
-                      return (
-                          <div className='modalContainer'>
-                        <button className='modalButton' onClick={handleClick}>Cerrar</button>
-                      <h1 className='modalTitle'>Contacto</h1>
-                      <form className='contactForm'>
-                        <label>
-                          Nombre:
-                          <input type='text' name='name' />
-                        </label>
-                        <label>
-                          Correo electrónico:
-                          <input type='email' name='email' />
-                        </label>
-                        <label>
-                          Mensaje:
-                          <textarea name='message' />
-                        </label>
-                        <input type='submit' value='Enviar' />
-                      </form>
-                    </div>
-                  );
+                    return (
+                        <div className='modalContainer'>
+                          <button className='modalButton' onClick={handleClick}>Cerrar</button>
+                          <h1 className='modalTitle'>Contacto</h1>
+                          <form className='contactForm' onSubmit={sendEmail}>
+                            <label>
+                              Nombre:
+                              <input type='text' name='name' />
+                            </label>
+                            <label>
+                              Correo electrónico:
+                              <input type='email' name='email' />
+                            </label>
+                            <label>
+                              Mensaje:
+                              <textarea name='message' />
+                            </label>
+                            <input type='submit' value='Enviar' />
+                          </form>
+                        </div>
+                      );
             case 'Proyectos':
                 return (
                     <div className='modalContainer'>
