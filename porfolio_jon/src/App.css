@@ -12,5 +12,27 @@ body {
 
 .titulo_invaders {
     width: 100%;
+    margin-top: 10%;
+}
+
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.startButton {
+    width: 35%;
+    height: 25%;
     margin-top: 5%;
+    position: relative;
+    left: 33%;
+    margin-top: 25%;
+    animation: zoom 2s infinite;
+}
+
+.startButton:hover {
+  animation-play-state: paused;
+  transform: scale(1.2);
 }

@@ -30,10 +30,25 @@ function Invader({ position, type }) {
  // Sin dependencias, por lo que el efecto se ejecuta solo una vez
   
     return (
-      <button  className='invaderButton' style={{ position: 'absolute', left: `${position.x}%`, top: `${position.y}%` }} onClick={handleClick}>
-        {type}
-      </button>
+        <>
+        <div className='invaderImg' style={{ position: 'absolute', left: `${position.x}%`, top: `${position.y}%` }} onClick={handleClick}>
+            <p className='tipoInvader'>{type}</p>
+            <img className='naveExtraterrestre' src="/nave-espacial.png" alt="" typeof={type}/>
+        </div>
+
+      </>
     );
   }
   
   export default Invader;
+
+
+/*   <button  className='invaderButton' style={{ position: 'absolute', left: `${position.x}%`, top: `${position.y}%` }} onClick={handleClick}>
+  {type}
+</button> */
+
+
+{/* <div className='invaderImg' typeof={type}>
+<p className='tipoInvader' style={{ position: 'absolute', left: `${position.x}%`, top: `${position.y}%` }}>{type}</p>
+<img className='naveExtraterrestre' src="/nave-espacial.png" alt="" style={{ position: 'absolute', left: `${position.x}%`, top: `${position.y}%` }} onClick={handleClick} typeof={type}/>
+</div> */}

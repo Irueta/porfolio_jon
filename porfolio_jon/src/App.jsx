@@ -9,13 +9,19 @@ import './App.css';
 function App() {
   const [spaceshipPosition, setSpaceshipPosition] = useState({ x: 50, y: 0 });
   const [invaders, setInvaders] = useState([
-    { x: 0, y: 20, type: 'CV' },
-    { x: 30, y: 20, type: 'Contacto' },
-    { x: 60, y: 20, type: 'Proyectos' },
+    { x: 0, y: 30, type: 'CV' },
+    { x: 30, y: 30, type: 'Contacto' },
+    { x: 60, y: 30, type: 'Proyectos' },
+    { x: 0, y: 40, type: 'CV' },
+    { x: 30, y: 40, type: 'Contacto' },
+    { x: 60, y: 40, type: 'Proyectos' },
   ]);
   const [shots, setShots] = useState([]);
   const [collision, setCollision] = useState(null);
   const [moveRight, setMoveRight] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -95,7 +101,7 @@ function App() {
         const maxRight = Math.max(...prevInvaders.map((invader) => invader.x));
         const maxLeft = Math.min(...prevInvaders.map((invader) => invader.x));
   
-        if (!moveRight && maxRight >= 80) {
+        if (!moveRight && maxRight >= 75) {
           setMoveRight(true);
           return prevInvaders.map((invader) => ({ ...invader, x: invader.x - 1 }));
         }
@@ -115,14 +121,50 @@ function App() {
       clearInterval(intervalId2);
     };
   }, [moveRight]);
-  
 
+
+  useEffect(() => {
+      if (invaders.some((invader) => invader.y >= 80)) {
+        setGameOver(true);
+        setInvaders([
+          { x: 0, y: 30, type: 'CV' },
+          { x: 30, y: 30, type: 'Contacto' },
+          { x: 60, y: 30, type: 'Proyectos' },
+          { x: 0, y: 40, type: 'CV' },
+          { x: 30, y: 40, type: 'Contacto' },
+          { x: 60, y: 40, type: 'Proyectos' },
+        ]);
+      }
+  }, [invaders]);
+  
+  if (!gameStarted && !gameOver) {
+    return (
+      <div className='startScreen'>
+          <div className='titleContainer'>
+          <img  className='titulo_invaders' src="/jon_invaders.png" alt="" />
+        </div>
+        <div>
+        <img className='startButton' src="/start3.png" alt="" onClick={() => setGameStarted(true)}/>
+        </div>
+      </div>
+    );
+  }
+  if (gameOver) {
+    return (
+      <>
+        <div>
+          <img className='titulo_invaders' src="/gameover.png" alt="" />
+          <img  className='startButton' src="volverajugar.png" alt="" onClick={() => {setGameStarted(true); setGameOver(false)}}/>
+        </div>
+      </>
+    )
+  }
   return (
     <>
     <div>
       <div className='gameContainer'>
         <div className='titleContainer'>
-          <img  className='titulo_invaders' src="/titulo_invaders.png" alt="" />
+          <img  className='titulo_invaders' src="/jon_invaders.png" alt="" />
         </div>
         <div className='spaceShipContainer'>
         <Spaceship position={spaceshipPosition} />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Spaceship.css'
 
 function Spaceship({ position }) {
     const [spaceshipPosition, setSpaceshipPosition] = useState({x: 50, y: 0});
@@ -6,9 +7,9 @@ function Spaceship({ position }) {
       position: 'absolute',
       bottom: `${position.y}%`,
       left: `${position.x}%`,
-      width: '50px',
-      height: '50px',
-      backgroundColor: 'blue',
+      width: '12%',
+      height: '10%',
+      marginLeft: '-20px'
     };
 
     useEffect(() => {
@@ -27,7 +28,11 @@ function Spaceship({ position }) {
         };
       }, []);
   
-    return <div style={style}></div>;
+    return (
+        <div className='coheteContainer'>
+            <img className='cohete'  style={style} src="/cohete.png" alt="" />
+        </div>
+    )
   }
 
     export default Spaceship;
