@@ -5,6 +5,7 @@ import Spaceship from './components/Spaceship';
 import Invader from './components/Invader';
 import Shot from './components/Shot';
 import './App.css';
+import Modal from './components/Modal';
 
 function App() {
   const [spaceshipPosition, setSpaceshipPosition] = useState({ x: 50, y: 0 });
@@ -21,9 +22,13 @@ function App() {
   const [moveRight, setMoveRight] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [type, setType] = useState(null);
+  
 
 
   useEffect(() => {
+    if(modal === false){
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowLeft') {
         setSpaceshipPosition((position) => ({ ...position, x: Math.max(position.x - 5, 0) }));
@@ -39,7 +44,7 @@ function App() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [spaceshipPosition]);
+  }}, [spaceshipPosition, modal]);
 
 
   useEffect(() => {
@@ -47,12 +52,18 @@ function App() {
       switch (collision) {
         case 'CV':
           console.log('CV clicked');
+          setModal(true);
+          setType('CV');
           break;
         case 'Contacto':
           console.log('Contacto clicked');
+          setModal(true);
+          setType('Contacto');
           break;
         case 'Proyectos':
           console.log('Proyectos clicked');
+          setModal(true);
+          setType('Proyectos');
           break;
         default:
           break;
@@ -90,6 +101,7 @@ function App() {
 
 
   useEffect(() => {
+    if (modal === false){
     const moveInvaders = () => {
       setInvaders((prevInvaders) =>
         prevInvaders.map((invader) => ({ ...invader, y: invader.y + 1 }))
@@ -120,7 +132,7 @@ function App() {
       clearInterval(intervalId);
       clearInterval(intervalId2);
     };
-  }, [moveRight]);
+  }}, [moveRight,modal]);
 
 
   useEffect(() => {
@@ -178,6 +190,9 @@ function App() {
           <Shot key={index} position={shot} />
         ))}
         </div>
+        {modal ?
+          <Modal type={type} setModal={setModal}/>
+          : null}
       </div>
     </>
   );
