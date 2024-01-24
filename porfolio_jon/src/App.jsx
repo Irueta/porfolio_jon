@@ -148,6 +148,10 @@ function App() {
       ]);
     }
   }, [gameOver]);
+
+  useEffect(() => {
+      alert('Si no tienes teclado físico pulsa en los invasores directamente');
+  }, []);
   
   if (!gameStarted && !gameOver) {
     return (
@@ -250,7 +254,7 @@ function App() {
         </div>
         <div className='invadersContainer'>
         {invaders.map((invader, index) => (
-          <Invader key={index} position={invader} type={invader.type}/>
+          <Invader key={index} position={invader} type={invader.type} setModal={setModal} setType={setType}/>
         ))}
         </div>
         {shots.map((shot, index) => (

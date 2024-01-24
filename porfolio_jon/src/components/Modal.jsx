@@ -38,6 +38,7 @@ function Modal({ type, setModal }) {
                     return (
                         <div className='modalContainer'>
                           <button className='modalButton' onClick={handleClick}>Cerrar</button>
+                          <div className='contactoContainer'>
                           <h1 className='modalTitle'>Contacto</h1>
                           <form className='contactForm' onSubmit={sendEmail}>
                             <label>
@@ -53,7 +54,8 @@ function Modal({ type, setModal }) {
                               <textarea name='message' />
                             </label>
                             <input type='submit' value='Enviar' />
-                          </form>
+                          </form> 
+                          </div>
                         </div>
                       );
             case 'Proyectos':
