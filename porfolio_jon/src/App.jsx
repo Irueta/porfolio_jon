@@ -177,8 +177,11 @@ function App() {
       <div className='gameContainer'>
         <div className='headerBar'>
           <div className='scoreContainer'>
-            <img className='leyendaImg' src="/score.png" alt="" />
-            <p>00000</p>
+            <img className='leyendaImg' src="/controles.png" alt="" />
+            <div className='controles'>
+            <p className='flechas'>← →</p>
+            <p>espacio</p>
+            </div>
           </div>
           <div className='livesContainer'>
             <img className='leyendaImg' src="/leyenda.png" alt="" />

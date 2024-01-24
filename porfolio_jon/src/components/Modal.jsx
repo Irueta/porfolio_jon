@@ -59,11 +59,17 @@ function Modal({ type, setModal }) {
             case 'Proyectos':
                 return (
                     <div className='modalContainer'>
-                        <h1 className='modalTitle'>Proyectos</h1>
-                        <p className='modalText'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, maxime.
-                        </p>
                         <button className='modalButton' onClick={handleClick}>Cerrar</button>
+                        <div className='textoProyectos'>
+                        <h1 className='modalTitle'>Proyectos</h1>
+                        <p className='modalText'>Lo mejor es conocerme, pero he aquí algunos ejemplos:</p>
+                        </div>
+                        <div className='videosContainer'>
+                        <video src="/demo_bootcampsurvival.webm" controls></video>
+                        <video src="/demo_happyflow.webm" controls></video>
+                        <video src="/demo_lagunpay.webm" controls></video>
+                        <p>*Este último con colaboración de Alex Basurto</p>
+                        </div>
                     </div>
                 );
             default:

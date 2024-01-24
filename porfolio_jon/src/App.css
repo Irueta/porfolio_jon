@@ -69,6 +69,7 @@ body {
 
 .leyendaImg{
 transform: scale(0.4);
+margin-right: -120px;
 }
 
 .leyendaIconos{
@@ -83,8 +84,20 @@ transform: scale(0.4);
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: -120px;
 }
 
 .scoreContainer p {
-  font-size: 30px;
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+.controles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flechas {
+  transform: scale(2.5);
 }
