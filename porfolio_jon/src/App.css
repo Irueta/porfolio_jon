@@ -6,6 +6,15 @@ body {
     font-size: 10px;
   }
 
+.startScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+
   .gameContainer {
     display: flex;
     align-items: center;
@@ -69,7 +78,7 @@ body {
 
 .leyendaImg{
 transform: scale(0.4);
-margin-right: -120px;
+
 }
 
 .leyendaIconos{
@@ -78,6 +87,14 @@ margin-right: -120px;
   grid-template-rows: 1fr;
   width: 300px;
   margin: 5px 0px 0px 0px;
+}
+
+.leyendaConTexto{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
 }
 
 .scoreContainer{

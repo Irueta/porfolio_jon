@@ -98,7 +98,7 @@ function App() {
 
 
   useEffect(() => {
-    if (modal === false){
+    if (modal === true){
     const moveInvaders = () => {
       setInvaders((prevInvaders) =>
         prevInvaders.map((invader) => ({ ...invader, y: invader.y + 1 }))
@@ -151,6 +151,33 @@ function App() {
   
   if (!gameStarted && !gameOver) {
     return (
+      <>
+      <div className='headerBar'>
+          <div className='scoreContainer'>
+            <img className='leyendaImg' src="/controles.png" alt="" />
+            <div className='controles'>
+            <p className='flechas'>← →</p>
+            <p>espacio</p>
+            </div>
+          </div>
+          <div className='livesContainer'>
+            <img className='leyendaImg' src="/leyenda.png" alt="" />
+            <div className='leyendaIconos'>
+            <div className='leyenda'>
+              <img src="/nave-espacial-CV.png" alt="" />
+              <p>CV</p>
+            </div>
+            <div className='leyenda'>
+              <img src="/nave-espacial-Contacto.png" alt="" />
+              <p>Contacto</p>
+            </div>
+            <div className='leyenda'>
+              <img src="/nave-espacial-Proyectos.png" alt="" />
+              <p>Proyectos</p>
+              </div> 
+            </div>
+          </div>
+        </div>
       <div className='startScreen'>
           <div className='titleContainer'>
           <img  className='titulo_invaders' src="/jon_invaders.png" alt="" />
@@ -159,6 +186,7 @@ function App() {
         <img className='startButton' src="/start3.png" alt="" onClick={() => setGameStarted(true)}/>
         </div>
       </div>
+      </>
     );
   }
   if (gameOver) {
@@ -177,14 +205,19 @@ function App() {
       <div className='gameContainer'>
         <div className='headerBar'>
           <div className='scoreContainer'>
+            <div>
             <img className='leyendaImg' src="/controles.png" alt="" />
+            </div>
             <div className='controles'>
             <p className='flechas'>← →</p>
             <p>espacio</p>
             </div>
           </div>
           <div className='livesContainer'>
+            <div className='leyendaConTexto'>
             <img className='leyendaImg' src="/leyenda.png" alt="" />
+            <p>Con casi acertar bastará</p>
+            </div>
             <div className='leyendaIconos'>
             <div className='leyenda'>
               <img src="/nave-espacial-CV.png" alt="" />
