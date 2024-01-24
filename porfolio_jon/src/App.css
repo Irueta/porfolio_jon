@@ -49,11 +49,12 @@ body {
 }
 
 .headerBar{
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: 1fr;
   background-color: rgb(48, 194, 194);
   width: 100%;
-  justify-content: space-between;
+  height: 85px;
 }
 
 .livesContainer{
@@ -70,16 +71,31 @@ body {
   height: 100%; /* Asegúrate de que el div tenga una altura. Si no, puedes usar un valor específico en lugar de 100% */
 }
 
+.leyendaImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .leyenda img {
   width: 50px;
   height: 50px;
 
 }
 
-.leyendaImg{
+.leyendaImg1{
 transform: scale(0.4);
-
+position: fixed;
+    left: -120px;
 }
+
+.leyendaImg2{
+  transform: scale(0.4);
+  position: fixed;
+  right: 238px;
+  top: 12px;
+  
+  }
 
 .leyendaIconos{
   display: grid;
@@ -87,21 +103,26 @@ transform: scale(0.4);
   grid-template-rows: 1fr;
   width: 300px;
   margin: 5px 0px 0px 0px;
+  position: fixed;
+  right: 15px;
 }
 
 .leyendaConTexto{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
-
+.leyendaConTexto p{
+  position: fixed;
+  right: 325px;
+  top: 62px;
 }
 
 .scoreContainer{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: -120px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
 }
 
 .scoreContainer p {
@@ -113,8 +134,31 @@ transform: scale(0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  left: 270px;
 }
 
 .flechas {
   transform: scale(2.5);
 }
+
+.livesContainer {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 1fr;
+  justify-content: end;
+}
+
+/* .leyenda1 {
+  position: fixed;
+}
+
+.leyenda2 {
+  position: fixed;
+  right: 0px;
+}
+
+.leyenda3 {
+  position: fixed;
+  right: 0px;
+} */

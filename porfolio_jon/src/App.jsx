@@ -98,7 +98,7 @@ function App() {
 
 
   useEffect(() => {
-    if (modal === true){
+    if (modal === false){
     const moveInvaders = () => {
       setInvaders((prevInvaders) =>
         prevInvaders.map((invader) => ({ ...invader, y: invader.y + 1 }))
@@ -154,24 +154,30 @@ function App() {
       <>
       <div className='headerBar'>
           <div className='scoreContainer'>
-            <img className='leyendaImg' src="/controles.png" alt="" />
+            <div className='leyendaImgContainer'>
+            <img className='leyendaImg1' src="/controles.png" alt="" />
+            </div>
             <div className='controles'>
             <p className='flechas'>← →</p>
             <p>espacio</p>
             </div>
           </div>
+          <div></div>
           <div className='livesContainer'>
-            <img className='leyendaImg' src="/leyenda.png" alt="" />
+            <div className='leyendaConTexto'>
+            <img className='leyendaImg2' src="/leyenda.png" alt="" />
+            <p>Con casi acertar bastará</p>
+            </div>
             <div className='leyendaIconos'>
-            <div className='leyenda'>
+            <div className='leyenda leyenda1'>
               <img src="/nave-espacial-CV.png" alt="" />
               <p>CV</p>
             </div>
-            <div className='leyenda'>
+            <div className='leyenda leyenda2'>
               <img src="/nave-espacial-Contacto.png" alt="" />
               <p>Contacto</p>
             </div>
-            <div className='leyenda'>
+            <div className='leyenda leyenda3'>
               <img src="/nave-espacial-Proyectos.png" alt="" />
               <p>Proyectos</p>
               </div> 
@@ -203,31 +209,32 @@ function App() {
     <>
     <div>
       <div className='gameContainer'>
-        <div className='headerBar'>
+      <div className='headerBar'>
           <div className='scoreContainer'>
-            <div>
-            <img className='leyendaImg' src="/controles.png" alt="" />
+            <div className='leyendaImgContainer'>
+            <img className='leyendaImg1' src="/controles.png" alt="" />
             </div>
             <div className='controles'>
             <p className='flechas'>← →</p>
             <p>espacio</p>
             </div>
           </div>
+          <div></div>
           <div className='livesContainer'>
             <div className='leyendaConTexto'>
-            <img className='leyendaImg' src="/leyenda.png" alt="" />
+            <img className='leyendaImg2' src="/leyenda.png" alt="" />
             <p>Con casi acertar bastará</p>
             </div>
             <div className='leyendaIconos'>
-            <div className='leyenda'>
+            <div className='leyenda leyenda1'>
               <img src="/nave-espacial-CV.png" alt="" />
               <p>CV</p>
             </div>
-            <div className='leyenda'>
+            <div className='leyenda leyenda2'>
               <img src="/nave-espacial-Contacto.png" alt="" />
               <p>Contacto</p>
             </div>
-            <div className='leyenda'>
+            <div className='leyenda leyenda3'>
               <img src="/nave-espacial-Proyectos.png" alt="" />
               <p>Proyectos</p>
               </div> 
