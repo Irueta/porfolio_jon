@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transform: scale(1.2);
 
   }
 
@@ -117,6 +118,7 @@ position: fixed;
   position: fixed;
   right: 325px;
   top: 62px;
+  width: 240px;
 }
 
 .scoreContainer{
@@ -149,16 +151,32 @@ position: fixed;
   justify-content: end;
 }
 
-/* .leyenda1 {
-  position: fixed;
+/* Media queries */
+
+@media (max-width:1000px){
+  .headerBar > *{
+    transform: scale(0.8);
+  }
 }
 
-.leyenda2 {
-  position: fixed;
-  right: 0px;
+@media (max-width:850px){
+  .headerBar > *{
+    transform: scale(0.6);
+  }
+  .leyendaImg1{
+    left: -190px;
+  }
+
+  .controles {
+    left: 190px;
+  }
 }
 
-.leyenda3 {
-  position: fixed;
-  right: 0px;
-} */
+
+@media (max-width:650px){
+  .headerBar {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+

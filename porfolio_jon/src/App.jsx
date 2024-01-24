@@ -98,7 +98,7 @@ function App() {
 
 
   useEffect(() => {
-    if (modal === false){
+    if (modal === false && gameStarted === true && gameOver === false){
     const moveInvaders = () => {
       setInvaders((prevInvaders) =>
         prevInvaders.map((invader) => ({ ...invader, y: invader.y + 1 }))
@@ -129,7 +129,7 @@ function App() {
       clearInterval(intervalId);
       clearInterval(intervalId2);
     };
-  }}, [moveRight,modal]);
+  }}, [moveRight,modal, gameStarted, gameOver]);
 
 
   useEffect(() => {
@@ -151,7 +151,7 @@ function App() {
   
   if (!gameStarted && !gameOver) {
     return (
-      <>
+      <div className='gameContainer'>
       <div className='headerBar'>
           <div className='scoreContainer'>
             <div className='leyendaImgContainer'>
@@ -192,7 +192,7 @@ function App() {
         <img className='startButton' src="/start3.png" alt="" onClick={() => setGameStarted(true)}/>
         </div>
       </div>
-      </>
+      </div>
     );
   }
   if (gameOver) {
