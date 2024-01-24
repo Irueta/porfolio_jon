@@ -1,6 +1,6 @@
 
 body {
-    background-image: url('fondo.jpeg');
+    background-image: url('/fondo.jpeg');
     background-size: cover;
     font-family: "Press start 2P";
     font-size: 10px;
@@ -170,6 +170,20 @@ position: fixed;
   .controles {
     left: 190px;
   }
+
+  .leyendaImg2 {
+    transform: scale(0.4);
+    position: fixed;
+    right: 238px;
+    top: 5px;
+}
+
+  .leyendaConTexto p {
+    position: fixed;
+    right: 325px;
+    top: 55px;
+    width: 240px;
+}
 }
 
 
@@ -192,7 +206,7 @@ position: fixed;
   }
 
   .controles {
-    left: 0px;
+    left: 10px;
     top: -32px;
 }
 
@@ -218,6 +232,18 @@ position: fixed;
 .modalPDF {
   width: 100%;
   height: 600px;
+}
+.modal label {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal input {
+  margin: 10px 0px 10px 0px;
+}
+
+.modal textarea {
+  margin: 10px 0px 10px 0px;
 }
 
 }

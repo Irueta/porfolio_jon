@@ -70,7 +70,7 @@ function Modal({ type, setModal }) {
                         <video src="/demo_bootcampsurvival.webm" controls></video>
                         <video src="/demo_happyflow.webm" controls></video>
                         <video src="/demo_lagunpay.webm" controls></video>
-                        <p>*Este último con colaboración de Alex Basurto</p>
+                        <p>*Este último con la colaboración de Alex Basurto</p>
                         </div>
                     </div>
                 );

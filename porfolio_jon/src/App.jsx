@@ -150,7 +150,7 @@ function App() {
   }, [gameOver]);
 
   useEffect(() => {
-      alert('Si no tienes teclado físico pulsa en los invasores directamente');
+      alert('¡ATENCIÓN!Si no tienes teclado físico pulsa en los invasores directamente');
   }, []);
   
   if (!gameStarted && !gameOver) {
