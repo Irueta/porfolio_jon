@@ -7,8 +7,8 @@ function Spaceship({ position }) {
       position: 'absolute',
       bottom: `${position.y}%`,
       left: `${position.x}%`,
-      width: '12%',
-      height: '10%',
+      width: '100px',
+      height: '80px',
       marginLeft: '-20px'
     };
 

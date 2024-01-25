@@ -27,11 +27,11 @@ function App() {
   useEffect(() => {
     if(modal === false){
     const handleKeyDown = (event) => {
-      if (event.key === 'ArrowLeft') {
+      if (event.key === 'ArrowLeft' || event.key === 'a') {
         setSpaceshipPosition((position) => ({ ...position, x: Math.max(position.x - 5, 0) }));
-      } else if (event.key === 'ArrowRight') {
+      } else if (event.key === 'ArrowRight' || event.key === 'd') {
         setSpaceshipPosition((position) => ({ ...position, x: Math.min(position.x + 5, 100) }));
-      } else if (event.key === ' ') { // Si la tecla es espacio
+      } else if (event.key === ' ') { 
         setShots((prevShots) => [...prevShots, { ...spaceshipPosition, y: spaceshipPosition.y + 5 }]);
       }
     };
@@ -150,7 +150,7 @@ function App() {
   }, [gameOver]);
 
   useEffect(() => {
-      alert('¡ATENCIÓN!Si no tienes teclado físico pulsa en los invasores directamente');
+      alert('¡ATENCIÓN! Si no tienes teclado físico pulsa en los invasores directamente');
   }, []);
   
   if (!gameStarted && !gameOver) {
@@ -163,6 +163,7 @@ function App() {
             </div>
             <div className='controles'>
             <p className='flechas'>← →</p>
+            <p className='aYd'>A D</p>
             <p>espacio</p>
             </div>
           </div>
@@ -220,6 +221,7 @@ function App() {
             </div>
             <div className='controles'>
             <p className='flechas'>← →</p>
+            <p className='aYd'>A D</p>
             <p>espacio</p>
             </div>
           </div>

@@ -144,6 +144,10 @@ position: fixed;
   transform: scale(2.5);
 }
 
+.aYd {
+  margin-top: -30px !important;
+}
+
 .livesContainer {
   display: grid;
   grid-template-columns: 30% 70%;
