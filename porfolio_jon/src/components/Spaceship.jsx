@@ -9,7 +9,8 @@ function Spaceship({ position }) {
       left: `${position.x}%`,
       width: '100px',
       height: '80px',
-      marginLeft: '-20px'
+      marginLeft: '-20px',
+      transform: 'translateX(-25%)',
     };
 
     useEffect(() => {
