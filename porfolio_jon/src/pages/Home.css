@@ -1,0 +1,10 @@
+.videoContainer > video{
+    width: 40%;
+    height: 150px;
+}
+
+.jon_argazki {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+}

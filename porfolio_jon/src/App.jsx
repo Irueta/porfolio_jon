@@ -3,10 +3,13 @@ import React, { useState, useEffect } from "react";
 import InvadersGame from "./pages/InvadersGame";
 import SnakeGame from "./pages/SnakeGame";
 import Home from "./pages/Home";
+import Modal from "./components/Modal";
 
 function App() {
 const [invadersActive, setInvadersActive] = useState(false);
 const [snakeActive, setSnakeActive] = useState(false);
+const [modal, setModal] = useState(false);
+const [type, setType] = useState(null);
 
 useEffect(() => {
     if (invadersActive) {
@@ -24,8 +27,9 @@ useEffect(() => {
   return (
     <>
     {!snakeActive && !invadersActive ? <Home setInvadersActive={setInvadersActive} setSnakeActive={setSnakeActive}/> : null}
-    {snakeActive ? <SnakeGame /> : null}
-    {invadersActive ? <InvadersGame /> : null}
+    {snakeActive ? <SnakeGame setModal={setModal} setType={setType} modal={modal}/> : null}
+    {invadersActive ? <InvadersGame setModal={setModal} setType={setType} modal={modal}/> : null}
+    {modal ? <Modal type={type} setModal={setModal}/> : null}
     </>
   );
 }

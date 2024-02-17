@@ -20,7 +20,7 @@ const FoodType = {
   Contacto: 'Contacto',
 };
 
-const SnakeGame = () => {
+const SnakeGame = ({setModal, setType, modal}) => {
   const [snake, setSnake] = useState([{ x: 10, y: 10 }]);
   const [food, setFood] = useState(getRandomPosition());
   const [direction, setDirection] = useState(Direction.RIGHT);
@@ -33,7 +33,11 @@ const SnakeGame = () => {
   const [isPaused, setIsPaused] = useState(true);
   const [foodType, setFoodType] = useState(getRandomFoodType());
 
-
+useEffect(() => {
+  if(modal === true){
+    setIsPaused(true);
+  }
+}, [modal]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -143,7 +147,7 @@ const SnakeGame = () => {
       ) {
         setGameOver(true);
       }
-
+      //PAETAK JOERAN GAME OVER IPINTXEKO
       /*if (
         head.x < 0 ||
         head.x >= COLS ||
@@ -170,15 +174,18 @@ const SnakeGame = () => {
 
   const checkCounters = (counters) => {
     if (counters.CV === 3) {
-      alert('¡Has comido 3 veces la comida CV!');
+      setModal(true);
+      setType('CV');
       setCounters({ ...counters, CV: 0 });
     }
     if (counters.Proyectos === 3) {
-      alert('¡Has comido 3 veces la comida Proyectos!');
+      setModal(true);
+      setType('Proyectos');
       setCounters({ ...counters, Proyectos: 0 });
     }
     if (counters.Contacto === 3) {
-      alert('¡Has comido 3 veces la comida Contacto!');
+      setModal(true);
+      setType('Contacto');
       setCounters({ ...counters, Contacto: 0 });
     }
   };

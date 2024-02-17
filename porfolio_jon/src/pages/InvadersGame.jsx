@@ -5,9 +5,8 @@ import Spaceship from '../components/Spaceship';
 import Invader from '../components/Invader';
 import Shot from '../components/Shot';
 import './InvadersGame.css';
-import Modal from '../components/Modal';
 
-function InvadersGame() {
+function InvadersGame({setModal, setType, modal}) {
   const [spaceshipPosition, setSpaceshipPosition] = useState({ x: 50, y: 0 });
   const [invaders, setInvaders] = useState([
     { x: 0, y: 50, type: 'CV' },
@@ -19,8 +18,7 @@ function InvadersGame() {
   const [moveRight, setMoveRight] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [modal, setModal] = useState(false);
-  const [type, setType] = useState(null);
+ 
   
 
 
@@ -263,9 +261,6 @@ function InvadersGame() {
           <Shot key={index} position={shot} />
         ))}
         </div>
-        {modal ?
-          <Modal type={type} setModal={setModal}/>
-          : null}
       </div>
     </>
   );
