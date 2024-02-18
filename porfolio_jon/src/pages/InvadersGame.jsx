@@ -6,7 +6,7 @@ import Invader from '../components/Invader';
 import Shot from '../components/Shot';
 import './InvadersGame.css';
 
-function InvadersGame({setModal, setType, modal}) {
+function InvadersGame({setModal, setType, modal, setInvadersActive}) {
   const [spaceshipPosition, setSpaceshipPosition] = useState({ x: 50, y: 0 });
   const [invaders, setInvaders] = useState([
     { x: 0, y: 50, type: 'CV' },
@@ -19,7 +19,6 @@ function InvadersGame({setModal, setType, modal}) {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
  
-  
 
 
   useEffect(() => {
@@ -120,7 +119,7 @@ function InvadersGame({setModal, setType, modal}) {
       });
     };
   
-    const intervalId = setInterval(moveInvaders, 2000);
+    const intervalId = setInterval(moveInvaders, 20);
     const intervalId2 = setInterval(moveInvaders2, 500);
   
     return () => {
@@ -192,7 +191,7 @@ function InvadersGame({setModal, setType, modal}) {
           <img  className='titulo_invaders' src="/jon_invaders.png" alt="" />
         </div>
         <div>
-        <img className='startButton' src="/start3.png" alt="" onClick={() => setGameStarted(true)}/>
+        <img className='startButton1' src="/start3.png" alt="" onClick={() => setGameStarted(true)}/>
         </div>
       </div>
       </div>
@@ -203,7 +202,10 @@ function InvadersGame({setModal, setType, modal}) {
       <>
         <div>
           <img className='titulo_invaders' src="/gameover.png" alt="" />
-          <img  className='startButton' src="volverajugar.png" alt="" onClick={() => {setGameStarted(true); setGameOver(false)}}/>
+          <div className='restart_salir'>
+          <img  className='startButton gameOverButton' src="volverajugar.png" alt="" onClick={() => {setGameStarted(true); setGameOver(false)}}/>
+          <img className='salirButton gameOverButton' src="salir2.png" alt="" onClick={() => {setInvadersActive(false)}}/>
+          </div>
         </div>
       </>
     )

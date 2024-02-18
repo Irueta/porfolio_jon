@@ -1,9 +1,20 @@
 //Modal.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Modal.css'
 
-function Modal({ type, setModal }) {
-    
+function Modal({ modal, type, setModal, snakeActive, invadersActive}) {
+  const textoProyectosRef = useRef(null);
+
+  useEffect(() => {
+    if (textoProyectosRef.current) {
+      if (invadersActive) {
+        textoProyectosRef.current.style.backgroundColor = "rgb(48, 194, 194)";
+      }
+      if (snakeActive) {
+        textoProyectosRef.current.style.backgroundColor = "#9EC394";
+      }
+    }
+  }, [invadersActive, snakeActive]);
 
     const handleClick = () => {
         setModal(false);
@@ -62,7 +73,7 @@ function Modal({ type, setModal }) {
                 return (
                     <div className='modalContainer'>
                         <button className='modalButton' onClick={handleClick}>Cerrar</button>
-                        <div className='textoProyectos'>
+                        <div className='textoProyectos' ref={textoProyectosRef}>
                         <h1 className='modalTitle'>Proyectos</h1>
                         <p className='modalText'>Lo mejor es conocerme, pero he aquí algunos ejemplos:</p>
                         </div>

@@ -34,19 +34,36 @@ body {
   100% { transform: scale(1); }
 }
 
+.startButton1 {
+  width: 20%;
+  position: absolute;
+  top: 115%;
+  left: 40%;
+  animation: zoom 2s infinite;
+}
+
 .startButton {
     width: 35%;
     height: 25%;
     margin-top: 5%;
-    position: relative;
-    left: 33%;
-    margin-top: 25%;
-    animation: zoom 2s infinite;
 }
 
-.startButton:hover {
+.salirButton {
+  width: 12%;
+  height: 25%;
+  margin-top: 5%;
+}
+
+.gameOverButton{
+  left: 33%;
+  margin-top: 10%;
+  animation: zoom 2s infinite;
+}
+
+.gameOverButton, .startButton1:hover {
   animation-play-state: paused;
   transform: scale(1.2);
+  cursor: pointer;
 }
 
 .headerBar{
@@ -69,7 +86,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Asegúrate de que el div tenga una altura. Si no, puedes usar un valor específico en lugar de 100% */
+  height: 100%;
 }
 
 .leyendaImgContainer {
@@ -153,6 +170,17 @@ position: fixed;
   grid-template-columns: 30% 70%;
   grid-template-rows: 1fr;
   justify-content: end;
+}
+
+.naveExtraterrestre:hover{
+  cursor: pointer;
+}
+
+.restart_salir {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Media queries */

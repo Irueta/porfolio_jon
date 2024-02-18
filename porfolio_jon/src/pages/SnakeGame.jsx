@@ -20,7 +20,7 @@ const FoodType = {
   Contacto: 'Contacto',
 };
 
-const SnakeGame = ({setModal, setType, modal}) => {
+const SnakeGame = ({setModal, setType, modal, setSnakeActive}) => {
   const [snake, setSnake] = useState([{ x: 10, y: 10 }]);
   const [food, setFood] = useState(getRandomPosition());
   const [direction, setDirection] = useState(Direction.RIGHT);
@@ -249,14 +249,15 @@ useEffect(() => {
   return (
     <>
       <div className='title'><img className='snakeIMG' src="snake.png" alt="" /><img className='jonSnakeIMG' src="jonSnake.png" alt="" /><img className='snakeIMG' src="snake2.png" alt="" /></div>
+      <div><p className='explicacion'>Captura 3 comidas del mismo color para conocerme jugando, o si lo prefieres clicka el apartado que quieras consultar.</p></div>
       <div className="counters">
-        <div className="counter">
+        <div className="counter" onClick={()=>{setModal(true); setType('CV')}}>
         <div className={`cell_CV`}></div> CV: {counters.CV}
         </div>
-        <div className="counter">
+        <div className="counter" onClick={()=>{setModal(true); setType('Proyectos')}}>
         <div className={`cell_Proyectos`}></div> Proyectos: {counters.Proyectos}
         </div>
-        <div className="counter">
+        <div className="counter" onClick={()=>{setModal(true); setType('Contacto')}}>
         <div className={`cell_Contacto`}></div> Contacto: {counters.Contacto}
         </div>
       </div>
@@ -272,6 +273,7 @@ useEffect(() => {
       </div>
       </div>
       <div className='restart-container'><h2 className='restart' onClick={handleGameOver}>Restart</h2></div>
+      <div className='restart-container'><h2 className='restart' onClick={()=>{setSnakeActive(false)}}>Salir</h2></div>
     </>
   );
 };
