@@ -119,7 +119,7 @@ function InvadersGame({setModal, setType, modal, setInvadersActive}) {
       });
     };
   
-    const intervalId = setInterval(moveInvaders, 20);
+    const intervalId = setInterval(moveInvaders, 2000);
     const intervalId2 = setInterval(moveInvaders2, 500);
   
     return () => {

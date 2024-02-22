@@ -31,6 +31,10 @@
     margin-bottom: 10px;
   }
 
+  video {
+    background-color: black;
+  }
+
   .textoProyectos {
     background-color: rgb(48, 194, 194);
     width: 100%;

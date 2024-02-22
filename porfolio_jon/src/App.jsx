@@ -28,6 +28,7 @@ useEffect(() => {
     }
     if (!invadersActive && !snakeActive) {
       document.body.style.background = "linear-gradient(#57526e, #0E0A2F)";
+      /* document.body.style.background = "linear-gradient(#57526e, black)"; */
       document.body.style.color = "white";
       document.body.style.fontFamily = 'Lucida Console';
       document.body.style.fontSize = "16px";
